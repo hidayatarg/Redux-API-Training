@@ -1,23 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class Counter extends Component {
+class Counter extends Component {
   state = {
     count: 0
   };
 
-  incrementHandler = () => {
-    this.setState({
-      count: this.state.count + 1
-    });
-  };
+  incrementHandler = () => {};
 
-  decrementHandler = () => {
-    if (this.state.count > 0) {
-      this.setState({
-        count: this.state.count - 1
-      });
-    }
-  };
+  decrementHandler = () => {};
 
   resetHandler = () => {
     this.setState({
@@ -37,7 +28,7 @@ export default class Counter extends Component {
 
     return (
       <div>
-        <h3>Counter: {this.state.count}</h3>
+        <h3>Counter: {this.props.count}</h3>
         <button style={buttonMargin} onClick={this.incrementHandler}>
           UP
         </button>
@@ -51,3 +42,20 @@ export default class Counter extends Component {
     );
   }
 }
+
+// it recive the state from the redux store
+// state will be the object with the count property
+// return an object => key names are the prop names
+function mapStateToProps(state) {
+  return {
+    // give the count key with value from state.count
+    // reach it via this.props.countp
+    count: state.count
+  };
+}
+
+export default connect(mapStateToProps)(Counter);
+
+// You need to tell connect explicitly which data to pull off the store
+// or it will give empty we can do this using a function called
+// mapStateToProps
