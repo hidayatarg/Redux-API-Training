@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { increment, decrement, reset } from "./action";
 
 class Counter extends Component {
   state = {
@@ -7,15 +8,15 @@ class Counter extends Component {
   };
 
   incrementHandler = () => {
-    this.props.dispatch({ type: "INCREMENT" });
+    this.props.increment();
   };
 
   decrementHandler = () => {
-    this.props.dispatch({ type: "DECREMENT" });
+    this.props.decrement();
   };
 
   resetHandler = () => {
-    this.props.dispatch({ type: "RESET" });
+    this.props.reset();
   };
 
   render() {
@@ -56,7 +57,14 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Counter);
+const mapDispatchToProps = {
+  // connect to action creators
+  increment,
+  decrement,
+  reset
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 // You need to tell connect explicitly which data to pull off the store
 // or it will give empty we can do this using a function called
