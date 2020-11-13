@@ -18,12 +18,10 @@ function reducer(state = initalState, action) {
       return {
         count: state.count + 1
       };
-
     case "DECREMENT":
       return {
         count: state.count - 1
       };
-
     default:
       return state;
   }
@@ -32,13 +30,13 @@ function reducer(state = initalState, action) {
 const store = createStore(reducer);
 console.log("Connected to store: ", store.getState());
 
-// reducer is called with new action
-store.dispatch({ type: "INCREMENT" });
-console.log("Connected to store: ", store.getState());
+// // reducer is called with new action
+// store.dispatch({ type: "INCREMENT" });
+// console.log("Connected to store: ", store.getState());
 
-store.dispatch({ type: "INCREMENT" });
-store.dispatch({ type: "DECREMENT" });
-console.log("Connected to store: ", store.getState());
+// store.dispatch({ type: "INCREMENT" });
+// store.dispatch({ type: "DECREMENT" });
+// console.log("Connected to store: ", store.getState());
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

@@ -6,9 +6,13 @@ class Counter extends Component {
     count: 0
   };
 
-  incrementHandler = () => {};
+  incrementHandler = () => {
+    this.props.dispatch({ type: "INCREMENT" });
+  };
 
-  decrementHandler = () => {};
+  decrementHandler = () => {
+    this.props.dispatch({ type: "DECREMENT" });
+  };
 
   resetHandler = () => {
     this.setState({
@@ -59,3 +63,5 @@ export default connect(mapStateToProps)(Counter);
 // You need to tell connect explicitly which data to pull off the store
 // or it will give empty we can do this using a function called
 // mapStateToProps
+
+// Counter Component Recive two Props a count and a dispatch
