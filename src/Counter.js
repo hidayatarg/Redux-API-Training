@@ -15,9 +15,7 @@ class Counter extends Component {
   };
 
   resetHandler = () => {
-    this.setState({
-      count: 0
-    });
+    this.props.dispatch({ type: "RESET" });
   };
 
   render() {
